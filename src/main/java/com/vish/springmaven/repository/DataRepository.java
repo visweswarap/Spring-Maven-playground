@@ -1,6 +1,6 @@
 package com.vish.springmaven.repository;
 
-public interface Repository<T> {
+public interface DataRepository<T> {
 
     void store(T t);
 

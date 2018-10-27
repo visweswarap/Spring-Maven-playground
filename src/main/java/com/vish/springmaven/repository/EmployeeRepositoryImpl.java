@@ -1,17 +1,19 @@
 package com.vish.springmaven.repository;
 
 import com.vish.springmaven.modal.Employee;
+import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EmployeeRepositoryImpl implements Repository<Employee> {
+@Repository
+public class EmployeeRepositoryImpl implements DataRepository<Employee> {
 
-    private Map<Integer, Employee> repository;
+    private static Map<Integer, Employee> repository = new HashMap();
 
     public EmployeeRepositoryImpl() {
-        this.repository = new HashMap<>();
+
     }
 
     @Override
