@@ -1,5 +1,7 @@
 package com.vish.springmaven.repository;
 
+import java.util.List;
+
 public interface DataRepository<T> {
 
     void store(T t);
@@ -9,4 +11,6 @@ public interface DataRepository<T> {
     T search(String name);
 
     T delete(int id);
+
+    List<T> getAll();
 }

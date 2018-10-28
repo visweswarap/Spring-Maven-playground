@@ -3,17 +3,24 @@ package com.vish.springmaven.repository;
 import com.vish.springmaven.modal.Employee;
 import org.springframework.stereotype.Repository;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import javax.annotation.PostConstruct;
+import java.util.*;
 
 @Repository
 public class EmployeeRepositoryImpl implements DataRepository<Employee> {
 
-    private static Map<Integer, Employee> repository = new HashMap();
+    private static Map<Integer, Employee> repository = new HashMap<>();
 
     public EmployeeRepositoryImpl() {
 
+    }
+
+    @PostConstruct
+    public void init(){
+        if(repository.isEmpty()){
+            repository.put(1, new Employee(1, "Vish", "developer"));
+            repository.put(2, new Employee(2, "Pepala", "developer"));
+        }
     }
 
     @Override
@@ -42,8 +49,13 @@ public class EmployeeRepositoryImpl implements DataRepository<Employee> {
     @Override
     public Employee delete(int id) {
         Employee e = repository.get(id);
-        this.repository.remove(id);
+        repository.remove(id);
         return e;
+    }
+
+    @Override
+    public List<Employee> getAll(){
+        return new ArrayList<>(repository.values());
     }
 
 }
