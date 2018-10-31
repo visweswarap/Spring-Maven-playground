@@ -1,5 +1,6 @@
 package com.vish.springmaven.repository;
 
+import com.vish.springmaven.modal.Department;
 import com.vish.springmaven.modal.Employee;
 import org.springframework.stereotype.Repository;
 
@@ -18,8 +19,8 @@ public class EmployeeRepositoryImpl implements DataRepository<Employee> {
     @PostConstruct
     public void init(){
         if(repository.isEmpty()){
-            repository.put(1, new Employee(1, "Vish", "developer"));
-            repository.put(2, new Employee(2, "Pepala", "developer"));
+            repository.put(1, new Employee(1, "Vish", Department.DEVELOPMENT));
+            repository.put(2, new Employee(2, "Pepala", Department.DEVELOPMENT));
         }
     }
 

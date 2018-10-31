@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("employee")
+@RequestMapping("/employee")
 public class EmployeeController {
 
     @Autowired
     DataRepository<Employee> repository;
 
-    @RequestMapping("getAll")
+    @RequestMapping("/getAll")
     public String getAll(ModelMap modelMap) {
         modelMap.addAttribute("employees" ,repository.getAll());
         return "employees";

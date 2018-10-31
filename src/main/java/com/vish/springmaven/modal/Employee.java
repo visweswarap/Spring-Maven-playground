@@ -6,9 +6,11 @@ public class Employee {
 
     private String name;
 
-    private String department;
+    private Department department;
 
-    public Employee(int id, String name, String department) {
+    private Address address;
+
+    public Employee(int id, String name, Department department) {
         this.id = id;
         this.name = name;
         this.department = department;
@@ -30,11 +32,19 @@ public class Employee {
         this.name = name;
     }
 
-    public String getDepartment() {
+    public Department getDepartment() {
         return department;
     }
 
-    public void setDepartment(String department) {
+    public void setDepartment(Department department) {
         this.department = department;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }
