@@ -1,5 +1,6 @@
 package com.vish.springmaven.repository;
 
+import com.vish.springmaven.modal.Address;
 import com.vish.springmaven.modal.Department;
 import com.vish.springmaven.modal.Employee;
 import org.springframework.stereotype.Repository;
@@ -19,8 +20,9 @@ public class EmployeeRepositoryImpl implements DataRepository<Employee> {
     @PostConstruct
     public void init(){
         if(repository.isEmpty()){
-            repository.put(1, new Employee(1, "Vish", Department.DEVELOPMENT));
-            repository.put(2, new Employee(2, "Pepala", Department.DEVELOPMENT));
+            repository.put(1, new Employee(1, "Vish", Department.DEVELOPMENT, new Address()));
+            repository.put(2, new Employee(2, "Pepala", Department.DEVELOPMENT, new Address()));
+            repository.put(3, new Employee(3, "Naidu", Department.TESTING, new Address()));
         }
     }
 
@@ -38,7 +40,10 @@ public class EmployeeRepositoryImpl implements DataRepository<Employee> {
     public Employee search(String name) {
         Collection<Employee> emps = repository.values();
 
-        emps.stream().filter(emp -> emp.getName().equalsIgnoreCase(name)).findAny().orElse(null);
+        emps.stream()
+                .filter(emp -> emp.getName().equalsIgnoreCase(name))
+                .findAny()
+                .orElse(null);
 
         /*for (Employee emp : emps) {
             if (emp.getName().equalsIgnoreCase(name))

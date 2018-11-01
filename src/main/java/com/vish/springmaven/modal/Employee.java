@@ -10,10 +10,11 @@ public class Employee {
 
     private Address address;
 
-    public Employee(int id, String name, Department department) {
+    public Employee(int id, String name, Department department, Address address) {
         this.id = id;
         this.name = name;
         this.department = department;
+        this.address = address;
     }
 
     public int getId() {

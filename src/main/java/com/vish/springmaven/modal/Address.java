@@ -18,6 +18,10 @@ public class Address {
         this.zipcode = zipcode;
     }
 
+    public Address(){
+
+    }
+
     public String getAddressLine1() {
         return addressLine1;
     }
