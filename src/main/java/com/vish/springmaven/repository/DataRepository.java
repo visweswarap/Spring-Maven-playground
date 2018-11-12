@@ -13,4 +13,6 @@ public interface DataRepository<T> {
     T delete(int id);
 
     List<T> getAll();
+
+    void update(T t);
 }

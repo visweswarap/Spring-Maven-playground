@@ -20,4 +20,6 @@ public interface EmployeeService {
     boolean delete(Employee employee);
 
     List<Employee> getByDepartment(Department department);
+
+    List<Employee> getByCity(String city);
 }

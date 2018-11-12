@@ -9,11 +9,11 @@ import javax.annotation.PostConstruct;
 import java.util.*;
 
 @Repository
-public class EmployeeRepositoryImpl implements DataRepository<Employee> {
+public class EmployeeRepository implements DataRepository<Employee> {
 
     private static Map<Integer, Employee> repository = new HashMap<>();
 
-    public EmployeeRepositoryImpl() {
+    public EmployeeRepository() {
 
     }
 
@@ -64,4 +64,12 @@ public class EmployeeRepositoryImpl implements DataRepository<Employee> {
         return new ArrayList<>(repository.values());
     }
 
+    @Override
+    public void update(Employee employee) {
+        Employee persistedEmployee = repository.get(employee.getId());
+        persistedEmployee.setName(employee.getName());
+        persistedEmployee.setDepartment(employee.getDepartment());
+        persistedEmployee.setAddress(employee.getAddress());
+        repository.put(employee.getId(), employee);
+    }
 }
