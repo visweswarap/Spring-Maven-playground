@@ -8,7 +8,7 @@ import com.vish.springmaven.repository.EmployeeRepository
 import spock.lang.Specification
 import spock.lang.Unroll
 
-class EmployeeServiceImplTest extends Specification {
+class EmployeeServiceImplSpec extends Specification {
 
     def repository = new EmployeeRepository()
 
