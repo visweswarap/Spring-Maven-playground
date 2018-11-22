@@ -40,7 +40,7 @@ class EmployeeServiceImplSpec extends Specification {
         def result = service.getById(id)
 
         then:
-        assert result.name == "test name"
+        result.name == "test name"
     }
 
     @Unroll
