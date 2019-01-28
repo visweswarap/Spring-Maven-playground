@@ -55,6 +55,18 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public List<Employee> getByCity(final String city) {
+
+/*        List<Employee> all = repository.getAll();
+        List<Employee> empList = new ArrayList<>();
+        for (Employee emp : all) {
+            if(emp.getAddress().getCity().equals(city)){
+                empList.add(emp);
+            }
+        }
+
+        return empList;*/
+
+        // This is equivalent to the above code
         return repository.getAll()
                 .stream()
                 .filter(emp -> emp.getAddress().getCity().equals(city))
