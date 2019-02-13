@@ -1,5 +1,6 @@
 package com.vish.springmaven.service;
 
+import com.vish.springmaven.modal.Address;
 import com.vish.springmaven.modal.Department;
 import com.vish.springmaven.modal.Employee;
 import com.vish.springmaven.repository.DataRepository;
@@ -7,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -56,7 +59,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public List<Employee> getByCity(final String city) {
 
-/*        List<Employee> all = repository.getAll();
+    /*  List<Employee> all = repository.getAll();
         List<Employee> empList = new ArrayList<>();
         for (Employee emp : all) {
             if(emp.getAddress().getCity().equals(city)){
@@ -65,6 +68,40 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
 
         return empList;*/
+
+        //repository.getAll().stream().filter(emp -> emp.getAddress().getCity().equals(city)).map(Employee::addresess).collect(Collectors.toList()).stream().filter();
+
+        repository.getAll()
+                .stream()
+                .filter(emp -> emp.getAddress() != null)
+                .map(Employee::getAddress)
+                .map(address -> {
+                    if (address.getCity() == "Hyd") {
+                        //return address.getCity();
+                        return "Hyderabad";
+                    } else if (address.getCity() == "Gintur") {
+                        return "Guntur";
+                    } else {
+                        return null;
+                    }
+                })
+                .findFirst()
+                .orElse(null);
+
+        //Streaming list of lists
+        String s = repository.getAll()
+                .stream()
+                .filter(emp -> emp.getAddress().getCity().equals(city))
+                .map(Employee::addresess)
+                .map(addresses -> addresses
+                        .stream()
+                        .filter(address -> address != null && address.getCity() != null)
+                        .findAny())
+                .findAny()
+                .get()
+                .map(Address::getCity)
+                .orElse(null);
+
 
         // This is equivalent to the above code
         return repository.getAll()

@@ -1,5 +1,7 @@
 package com.vish.springmaven.modal;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public class Employee {
@@ -47,6 +49,10 @@ public class Employee {
 
     public Address getAddress() {
         return address;
+    }
+
+    public List<Address> addresess(){
+        return Arrays.asList(address);
     }
 
     public void setAddress(Address address) {
