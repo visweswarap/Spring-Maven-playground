@@ -7,6 +7,9 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.util.IOUtils;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 
 import java.io.*;
@@ -20,15 +23,15 @@ public class XlsToCsvConverter {
         // For storing data into CSV files
         StringBuilder data = new StringBuilder();
         FileOutputStream fos = null;
-       HSSFWorkbook workbook = null;
+        XSSFWorkbook workbook = null;
         try
         {
             fos = new FileOutputStream(outputFile);
 
             // Get the workbook object for XLS file
-            workbook = new HSSFWorkbook(new FileInputStream(inputFile));
+            workbook = new XSSFWorkbook(new FileInputStream(inputFile));
             // Get first sheet from the workbook
-            HSSFSheet sheet = workbook.getSheetAt(0);
+            XSSFSheet sheet = workbook.getSheetAt(0);
             Cell cell;
             Row row;
 
@@ -106,8 +109,8 @@ public class XlsToCsvConverter {
 
 
     public static void main(String[] args) throws IOException {
-        File inputFile = new File("C:\\Users\\visweswara.pepala\\workspace\\Rough\\test.xlsx");
-        File outputFile = new File("C:\\Users\\visweswara.pepala\\workspace\\Rough\\output1.csv");
+        File inputFile = new File("C:\\Users\\visweswara.pepala\\workspace\\Rough\\test1.xls");
+        File outputFile = new File("C:\\Users\\visweswara.pepala\\workspace\\Rough\\output2.csv");
         xlsx(inputFile, outputFile);
     }
 }
