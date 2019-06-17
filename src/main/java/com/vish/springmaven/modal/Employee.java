@@ -1,5 +1,6 @@
 package com.vish.springmaven.modal;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -13,6 +14,8 @@ public class Employee {
     private Department department;
 
     private Address address;
+
+    private BigDecimal salary;
 
     public Employee(int id, String name, Department department, Address address) {
         this.id = id;
@@ -57,6 +60,14 @@ public class Employee {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public BigDecimal getSalary() {
+        return salary;
+    }
+
+    public void setSalary(BigDecimal salary) {
+        this.salary = salary;
     }
 
     @Override

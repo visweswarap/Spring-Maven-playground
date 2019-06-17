@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -50,6 +48,17 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public List<Employee> getByDepartment(Department department) {
+
+        List<Employee> employees = repository.getAll();
+        List<Employee> employees1 = repository.getAll();
+
+        employees = repository.getAll().stream().collect(Collectors.toList());
+
+        //employees.stream().filter(e -> employees1.stream().filter(e2 -> e2.getId() == e.getId())).collect(Collectors.toSet());
+
+
+
+
         return repository.getAll()
                 .stream()
                 .filter(employee -> employee.getDepartment().equals(department))

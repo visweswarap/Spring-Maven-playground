@@ -1,47 +1,40 @@
 package com.vish.springmaven.rough;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.vish.springmaven.modal.Address;
+import com.vish.springmaven.modal.Employee;
+import com.vish.springmaven.repository.EmployeeRepository;
+import com.vish.springmaven.utils.OptionalUtils;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 public class Test1 {
     public static void main(String[] args) {
 
-        int x = 10;
-        Integer y = new Integer(10);
+        EmployeeRepository repo = new EmployeeRepository();
 
-        if(x == y){
-            System.out.println("Same");
-        } else {
-            System.out.println("Not Same");
-        }
+        repo.init();
 
-        Map<String, String> child1 = new HashMap<>();
-        child1.put("aaa","ABABAB");
-        child1.put("bbb","BCBCBC");
+        List<Employee> all = repo.getAll();
 
-        Map<String, String> child2 = new HashMap<>();
-        child2.put("ccc","CDCDCD");
-        child2.put("ddd","DEDEDE");
+        Boolean hyd = OptionalUtils.resolveNestedNulls(() -> all.get(0).getAddress().getSalary().doubleValue()).orElse(Double.valueOf(0)) > 0;
 
-        Map<String, Map<String, String>> outerMap = new HashMap<>();
-        outerMap.put("child1", child1);
-        outerMap.put("child2", child2);
+        /* String s = "Abc";
 
-        outerMap.get("");
+        all.stream().filter(emp -> Objects.nonNull(emp.getAddress())).findFirst().ifPresent(emp -> emp.setName(Objects.nonNull(s) ? s : null));
 
-        Stream<Map<String, String>> mapStream = outerMap.entrySet()
-                .stream()
-                .map(entry -> {
-                    String globalKey = entry.getKey();
-                    Map<String, String> collect = entry.getValue().entrySet().stream().collect(Collectors.toMap(entry1 -> globalKey + "_" + entry1.getKey(), entry1 -> entry1.getValue()));
-                    return collect;
-                });
-        //Map<String, String> any = mapStream.collect(Collectors.toMap());
+        List<Address> empNames = new ArrayList<>();
+        for(Employee emp: all){
+            Address addr = new Address();
+            addr.setCity(emp.getAddress().getCity());
+            addr.setState(emp.getAddress().getState());
+            empNames.add(addr);
+        }*/
 
-        System.out.println("asdfasdv");
-
+        System.out.println("asdasd");
     }
 
 

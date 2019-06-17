@@ -20,9 +20,9 @@ public class EmployeeRepository implements DataRepository<Employee> {
     @PostConstruct
     public void init(){
         if(repository.isEmpty()){
-            repository.put(1, new Employee(1, "Vish", Department.DEVELOPMENT, new Address()));
-            repository.put(2, new Employee(2, "Pepala", Department.DEVELOPMENT, new Address()));
-            repository.put(3, new Employee(3, "Naidu", Department.TESTING, new Address()));
+            repository.put(1, new Employee(1, "Vish", Department.DEVELOPMENT, new Address("Hyd", "TG")));
+            repository.put(2, new Employee(2, "Pepala", Department.DEVELOPMENT, new Address("Kvl", "AP")));
+            repository.put(3, new Employee(3, "Naidu", Department.TESTING, new Address("Nlr", "AP")));
         }
     }
 

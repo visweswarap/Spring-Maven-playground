@@ -1,5 +1,7 @@
 package com.vish.springmaven.modal;
 
+import java.math.BigDecimal;
+
 public class Address {
 
     private String addressLine1;
@@ -8,14 +10,20 @@ public class Address {
     private String state;
     private String Country;
     private String zipcode;
+    private BigDecimal salary;
 
     public Address(String addressLine1, String addressLine2, String city, String state, String country, String zipcode) {
         this.addressLine1 = addressLine1;
         this.addressLine2 = addressLine2;
         this.city = city;
         this.state = state;
-        Country = country;
+        this.Country = country;
         this.zipcode = zipcode;
+    }
+
+    public Address(String city, String state){
+        this.city = city;
+        this.state = state;
     }
 
     public Address(){
@@ -68,5 +76,13 @@ public class Address {
 
     public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
+    }
+
+    public BigDecimal getSalary() {
+        return salary;
+    }
+
+    public void setSalary(BigDecimal salary) {
+        this.salary = salary;
     }
 }
